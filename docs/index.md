@@ -9,7 +9,7 @@ title: Documentation
 1. [Implementation](#implementation)
 
 ## Overview
-Lensing is a package of python programs used to analyze fitz data of galaxies. First, the user must input a "postage stamp" containing one galaxy. Next, Lensing will deproject the image to show what the galaxy looked like before the contortion due to gravitanal lensing. Then, Lensing will output the four flexion parameters associated with the inputted galaxy.
+Lensing is a package of python programs used to analyze FITS files of galaxies. First, the user must input a "postage stamp" containing one galaxy. Next, Lensing will deproject the image to show what the galaxy looked like before the contortion due to gravitanal lensing. Then, Lensing will output the four flexion parameters associated with the inputted galaxy.
 
 Lensing is a powerful tool that will quickly compute lensing data for a given galaxy. It uses a pipeline of programs that refine and improve the prediction and measurment of the deprojection and flexion values.
 
