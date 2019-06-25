@@ -3,7 +3,7 @@ layout: default
 title: Documentation
 ---
 
-### Table of Contents
+## Table of Contents
 1. [Overview](#overview)
 1. [Installation](#installation)
 1. [Implementation](#implementation)
