@@ -63,10 +63,16 @@ This program uses these packages already you need to have them and also some oth
 Here is how to use every little part of this
 Here is how to use every little part of this
 Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
+
+```python
+#just testing if I can display code
+def function(a):
+  counter = 0
+  a = 4
+  for i in range(a):
+    counter += 1
+```
+
 Here is how to use every little part of this
 Here is how to use every little part of this
 Here is how to use every little part of this
