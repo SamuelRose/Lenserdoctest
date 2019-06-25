@@ -66,9 +66,9 @@ Here is how to use every little part of this
 #just testing if I can display code
 def function(a):
   counter = 0
-  a = 4
+  b = 4
   for i in range(a):
-    counter += 1
+    counter += b
 ```
 
 Here is how to use every little part of this
