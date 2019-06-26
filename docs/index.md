@@ -69,10 +69,10 @@ mygalaxy.setName(newname)
 The "data" argument is required to be a 2d list or numpy array. This data is best derived from a FITS file. If you are unfamiliar with FITS file handling, here is an easy way to extract the necessary data from a FITS file:
 
 ```python
-infile="galaxy_image"#whatever your FITS file is named. Be sure you call it from the correct directory
+infile = "galaxy_image" # make this whatever your FITS file is named. Be sure you call it from the correct directory
 hdu_list = fits.open(infile)
-objname=hdu_list[0].header['OBJECT']
-myval=hdu_list[0].data
+objname = hdu_list[0].header['OBJECT']
+myval = hdu_list[0].data
 hdu_list.close()
 ```
 
