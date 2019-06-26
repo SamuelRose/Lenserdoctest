@@ -48,8 +48,8 @@ Here is how to use every little part of this
 ### lenser_galaxy
 lenser_galaxy consists of a galaxy class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
 1. [Basics of Implementing a Galaxy Object](#Basics)
-    - [Instantiation](#To instantiate)
-    - [setName](#The galaxy class)
+    - [Instantiation](#To-instantiate)
+    - [setName](#The-galaxy-class)
 1. [Background subtraction]
 1. [Noise estimation]
 1. [Masking]
@@ -77,3 +77,41 @@ hdu_list.close()
 ```
 
 ### lenser_aim
+
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+Filler
+
