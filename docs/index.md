@@ -48,25 +48,26 @@ Here is how to use every little part of this
 ### lenser_galaxy
 lenser_galaxy consists of a galaxy class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
 1. [Basics of Implementing a Galaxy Object](#Basics-of-Implementing-a-Galaxy-Object)
-    - [Instantiation](#To-instantiate)
-    - [setName](#pookie)
+    - [Instantiation](#thing)
+    - [setName](#two)
+    - [About the data](#three)
 1. [Background subtraction]
 1. [Noise estimation]
 1. [Masking]
 #### Basics of Implementing a Galaxy Object
-<a name="pookie"></a> To instantiate a galaxy object simply set your object name equal to $galaxy(data, galaxyname)$. For example:
+<a name="thing"></a> To instantiate a galaxy object simply set your object name equal to $galaxy(data, galaxyname)$. For example:
 
 ```python
 mygalaxy = galaxy(data, galaxyname)
 ```
 
-The galaxy class only takes a maximum of two inputted attributes. However, the name attribute is not required to instantiate your galaxy, and when left out it will be defaulted to "blank." This name can be changed using the setName method:
+<a name="two"></a> The galaxy class only takes a maximum of two inputted attributes. However, the name attribute is not required to instantiate your galaxy, and when left out it will be defaulted to "blank." This name can be changed using the setName method:
 
 ```python
 mygalaxy.setName(newname)
 #your galaxy object will now have the new name of "newname"
 ```
-The "data" argument is required to be a 2d list or numpy array. This data is best derived from a FITS file. If you are unfamiliar with FITS file handling, here is an easy way to extract the necessary data from a FITS file:
+<a name="three"></a> The "data" argument is required to be a 2d list or numpy array. This data is best derived from a FITS file. If you are unfamiliar with FITS file handling, here is an easy way to extract the necessary data from a FITS file:
 
 ```python
 infile = "galaxy_image" # make this whatever your FITS file is named. Be sure you call it from the correct directory
