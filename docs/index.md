@@ -54,7 +54,8 @@ lenser_galaxy consists of a galaxy class. Using this class you can preform many 
 1. [Background subtraction]
 1. [Noise estimation]
 1. [Masking]
-#### <a name="Basics"></a>Basics of Implementing a Galaxy Object
+
+#### Basics of Implementing a Galaxy Object<a name="Basics"></a>
 <a name="Instantiation"></a> To instantiate a galaxy object simply set your object name equal to $galaxy(data, galaxyname)$. For example:
 
 ```python
