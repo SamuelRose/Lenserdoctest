@@ -8,76 +8,67 @@ title: Documentation
 2. [Installation](#installation)
 3. [Implementation](#implementation)
     - [lenser_galaxy](#lenser_galaxy)
+    - [lenser_aim](#lenser_galaxy)
     
 
 
 ## Overview
 Lenser is a package of python programs used to analyze FITS files of galaxies. First, the user must input a "postage stamp" containing one galaxy. Next, Lenser will deproject the image to show what the galaxy looked like before the contortion due to gravitanal lensing. Then, Lenser will output the four flexion parameters associated with the inputted galaxy.
 
-Lenser is a powerful tool that will quickly compute lensing data for a given galaxy. It uses a pipeline of programs that refine and improve the prediction and measurment of the deprojection and flexion values. The three programs in the pipeline are [lenser_galaxy](#lenser_galaxy), lenser_aim, and lenser_lens.
+Lenser is a powerful tool that will quickly compute lensing data for a given galaxy. It uses a pipeline of programs that refine and improve the prediction and measurment of the deprojection and flexion values. The three programs in the pipeline are [lenser_galaxy](#lenser_galaxy), lenser_aim.
 
 
-
+The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser_galaxy file can be used to clean an image of a galaxy by getting rid of background radiation, adjusting for noise, and masking out irrelevant data. These images can then be manipulated using the lenser-aim file which will predict how the galaxy looks without the presence of gravitational lensing.
 
 <img src="https://i.imgur.com/uFtAFu0.jpg" width="300">
 
 
 
 ## Installation
-This package uses python 3 (mostly, except for Evan's print statements). You will need to have astropy, scipy, numpy, and matplotlib installed on your computer. These are standard with most python insallations. Depending on the environment you run the code from, you may also need to install a LaTex compiler (MikTex should work). Additionally you may need to go into this package and change all of the tabs because of an inconsistant use of tabs and spaces.
+This package uses python 3, and you will need to have astropy, scipy, numpy, and matplotlib installed. These are standard with most python insallations. Depending on the environment you run the code from, you may also need to install a LaTex compiler (MikTex should work).
 ## Implementation
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
+[lenser_galaxy](#lenser_galaxy)
+[lenser_aim](#lenser_aim)
 
-```python
-#just testing if I can display code
-def function(a):
-  counter = 0
-  b = 4
-  for i in range(a):
-    counter += b
-```
-
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
-Here is how to use every little part of this
 ### lenser_galaxy
-lenser_galaxy consists of a galaxy class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
-1. [Basics of Implementing a Galaxy Object](#Basics)
+lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
+1. [Using the Galaxy class](#Galaxy)
     - [Instantiation](#Instantiation)
     - [setName](#setName)
-    - [About the data](#Data)
-1. [Background subtraction]
-1. [Noise estimation]
-1. [Masking]
+    - [setPar](#setPar)
+    - [Background subtraction]
+    - [Noise estimation]
+    - [Masking]
+2. [Using the Image class](#Image)
+3. [Using the Lens class](#Lens)
 
-#### Basics of Implementing a Galaxy Object<a name="Basics"></a>
-<a name="Instantiation"></a> To instantiate a galaxy object simply set your object name equal to galaxy(data, galaxyname). For example:
-
+#### Using the Galaxy class<a name="Basics"></a>
+<a name="Instantiation"></a> The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
 ```python
-mygalaxy = galaxy(data, galaxyname)
+mygalaxy = Galaxy(xc=0,yc=0,ns=0.5,rs=1.0,q=1.0,phi=0.0,galaxyLens=None)
 ```
-
-<a name="setName"></a> The galaxy class only takes a maximum of two inputted attributes. However, the name attribute is not required to instantiate your galaxy, and when left out it will be defaulted to "blank." This name can be changed using the setName method:
+This is the default galaxy object. xc is SOMETHING, yc is SOMETHING, ns is the factor by which the intensity falls of, rs is the **Einstein radius????** or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, and phi is the angle of rotation of the galaxy in radians.
+    
+<a name="setName"></a>
+You can change the name of your galaxy object using the setName method. 
 
 ```python
 mygalaxy.setName(newname)
 #your galaxy object will now have the new name of "newname"
 ```
-<a name="Data"></a> The "data" argument is required to be a 2d list or numpy array. This data is best derived from a FITS file. If you are unfamiliar with FITS file handling, here is an easy way to extract the necessary data from a FITS file:
+<a name="setPar"></a>
+You can change any of the parameters using the setPar function. This function takes two arguments: the new value and the value type.
 
 ```python
-infile = "galaxy_image" # make this whatever your FITS file is named. Be sure you call it from the correct directory
-hdu_list = fits.open(infile)
-objname = hdu_list[0].header['OBJECT']
-myval = hdu_list[0].data
-hdu_list.close()
+mygalaxy.setPar(value = newvalue, type = valuetype)
+#mygalaxy will now have its valuetype parameter changed to whatever newvalue is
 ```
 
+The acceptable values for the type argument are the first six attributes of the galaxy class: "xc", "yx", "ns", "rs", "q", "phi". Using one of these as the type argument will change that prospective attribute to whatever the value argument is.
+
+#### Using the Image class<a name="Image"></a>
+
+#### Using the Lens class<a name="Lens"></a>
 ### lenser_aim
-This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. 
+This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. 
 
