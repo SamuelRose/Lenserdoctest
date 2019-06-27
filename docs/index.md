@@ -45,7 +45,7 @@ lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Usin
     - [deproject](#deproject)
 
 #### Using the Galaxy class<a name="Galaxy"></a>
-<a name="Instantiationgalaxy"></a> The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
+<a name="Instantiationgalaxy"></a>The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
 ```python
 mygalaxy = Galaxy(xc=0, yc=0, ns=0.5, rs=1.0, q=1.0, phi=0.0, galaxyLens=None)
 ```
@@ -92,10 +92,14 @@ The nx, ny, and lens arguments are inputted into the respective arguments for th
 
 
 #### Using the Image class<a name="Image"></a>
-
+<a name="InstantiationImage"></a>The image class contains a seriese of maps as its main attributes: a map of the overall data, a map of the noise, and a map of the mask. Each attribute must be given at instantiation. 
+```python
+myimage = Image(name = "myimagename", datamap = data, noisemap = noisedata, maskmap = maskdata)
+```
+For the map attributes to be workable with other functions in Lenser, it is best that they are all 2D lists or numpy arrays of the same size.
+##### plot<a name="plotImage"></a>
 
 #### Using the Lens class<a name="Lens"></a>
 ##### deproject
 ### lenser_aim
-This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. 
 
