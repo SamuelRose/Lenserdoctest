@@ -33,34 +33,33 @@ This package uses python 3, and you will need to have astropy, scipy, numpy, and
 ### lenser_galaxy
 lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
 1. [Using the Galaxy class](#Galaxy)
-    - [Instantiation](#Instantiationgalaxy)
-    - [setName](#setName)
-    - [setPar](#setPar)
-    - [setLens](#setLens)
-    - [generateImage](#generateImage)
-    - [plot](#plotGalaxy)
+    - [setName()](#setName())
+    - [setPar()](#setPar())
+    - [setLens()](#setLens())
+    - [generateImage()](#generateImage())
+    - [plot()](#plotGalaxy)
 2. [Using the Image class](#Image)
-    - [plot](#plotImage)
-    - [setMap](#setMap)
-    - [getMap](#getMap)
+    - [plot()](#plotImage)
+    - [setMap()](#setMap())
+    - [getMap()](#getMap())
 3. [Using the Lens class](#Lens)
-    - [deproject](#deproject)
+    - [deproject()](#deproject())
 
 #### Using the Galaxy class<a name="Galaxy"></a>
-<a name="Instantiationgalaxy"></a>The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
+The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
 ```python
 mygalaxy = Galaxy(xc=0, yc=0, ns=0.5, rs=1.0, q=1.0, phi=0.0, galaxyLens=None)
 ```
 This is the default galaxy object. xc is SOMETHING, yc is SOMETHING, ns is the factor by which the intensity falls of, rs is the **Einstein radius????** or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, phi is the angle of rotation of the galaxy in radians, and galaxyLens is a [Lens object](#Lens) or None.
     
-##### setName
+##### setName()
 You can change the name of your galaxy object using the setName method.
 
 ```python
 mygalaxy.setName(newname)
 #your galaxy object will now have the new name of "newname"
 ```
-##### setPar
+##### setPar()
 You can change any of the parameters using the setPar function. This function takes two arguments: the new value and the value type.
 
 ```python
@@ -70,7 +69,7 @@ mygalaxy.setPar(val = newvalue, type = valuetype)
 
 The acceptable values for the type argument are the first six attributes of the galaxy class: "xc", "yx", "ns", "rs", "q", "phi". Using one of these as the type argument will change that prospective attribute of your galaxy object to whatever the val argument is.
     
-##### setLens
+##### setLens()
 The setLens method can be used to change the Lens attribute of the Galaxyobject. 
 ```python
 mygalaxy.setLens(newlens = myLens)
@@ -78,14 +77,14 @@ mygalaxy.setLens(newlens = myLens)
 ```
 The newlens argument must be a [Lens object](#Lens).
 
-##### generateImage
+##### generateImage()
 The generateImage function is used to create an instance of the [Image class](#Image) based on your galaxy object.
 ```python
 mygalaxy.generateImage(nx = value1, ny = value2, lens=False, noise1=0, noise2=0)
 ```
 The nx and ny arguments are associated with the dimensions of the maps created by the [Image class](#Image). The lens attribute will apply the [deproject](#deproject) function to the galaxylens attribute of your galaxy object. Noise1 and noise2 will be used to generate the noise map attribute for the [Image class](#Image) object. The lens, noise1, and noise2 attributes are defaulted to False, 0, and 0 respectively. The nx and ny arguments must be inputted in order to use the function. 
 
-##### plot<a name="plotGalaxy"></a>
+##### plot()<a name="plotGalaxy"></a>
 This function uses the [generateImage](#generateIamge) function to create an [Image](#Image) object that is then displayed through a matplotlib window.
 ```python
 mygalaxy.plot(nx = value1, ny = value2, lens = False)
@@ -94,30 +93,35 @@ The nx, ny, and lens arguments are inputted into the respective arguments for th
 
 
 #### Using the Image class<a name="Image"></a>
-<a name="InstantiationImage"></a>The image class contains a seriese of maps as its main attributes: a map of the overall data, a map of the noise, and a map of the mask. Each attribute must be given at instantiation. 
+The image class contains a seriese of maps as its main attributes: a map of the overall data, a map of the noise, and a map of the mask. Each attribute must be given at instantiation. 
 ```python
 myimage = Image(name = "myimagename", datamap = mydata, noisemap = mynoisedata, maskmap = mymaskdata)
 ```
 For the map attributes to be workable with other functions in Lenser, it is best that they are all 2D lists or numpy arrays of the same size.
-##### plot<a name="plotImage"></a>
+##### plot()<a name="plotImage"></a>
 The plot function will plot information in an [Image object](#Image).
 ```python
 myimage.plot(type = mymaptype)
 ```
 The accepted values for the type argument are "data", "mask", and "noise". Using one of these arguments will plot the respective map and display it on a matplotlib window. The type argument is defaulted to 'data', so a plot function given without any arguments, `myimage.plot()`, will plot the datamap of the [Image object](#Image).
-##### setMap
+##### setMap()
 The setMap function can be used to change any of the three maps contained in the [Image object](#Image). 
 ```python
 myimage.setMap(newdata = mydata, type = mymaptype)
 ```
 The acceptable values for the type argument are "data", "mask", and "noise". Using one of these will change that respective attribute into whatever is given in the newdata argument. 
-##### getMap
+##### getMap()
 The getMap function can be used to get any of the three maps contained in the [Image object](#Image). 
 ```python
 myimage.getMap(type = mymaptype)
 ```
 The acceptable values for the type argument are "data", "mask", and "noise". Using one of these will return the respective attribute of your [Image object](#Image).
-#####
+##### generateMask()
+This function generates a mask based on the image data. This function then sets your image object's maskmap attribute to this newly generated mask.
+```python
+myimage.generateMask(subtractBackground=False)
+```
+The subtractBackground argument will subtract away the background radiation before the mask is generated. This argument is defaulted to False, so no arguments are needed when using this function. After using this function, your [Image object](#Image) will now have a map of ones and zeros as the maskmap attribute where ones correspond to relevant data.
 
 #### Using the Lens class<a name="Lens"></a>
 ##### deproject
