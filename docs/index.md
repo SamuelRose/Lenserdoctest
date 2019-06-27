@@ -33,31 +33,32 @@ This package uses python 3, and you will need to have astropy, scipy, numpy, and
 ### lenser_galaxy
 lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
 1. [Using the Galaxy class](#Galaxy)
-    - [Instantiation](#Instantiation)
+    - [Instantiation](#Instantiationgalaxy)
     - [setName](#setName)
     - [setPar](#setPar)
     - [setLens](#setLens)
-    - [Background subtraction]
-    - [Noise estimation]
-    - [Masking]
+    - [generateImage](#generateImage)
+    - [plot](#plotgalaxy)
 2. [Using the Image class](#Image)
+    - [
 3. [Using the Lens class](#Lens)
+    - [deproject](#deproject)
 
-#### Using the Galaxy class<a name="Basics"></a>
-<a name="Instantiation"></a> The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
+#### Using the Galaxy class<a name="Galaxy"></a>
+<a name="Instantiationgalaxy"></a> The galaxy object contains the set of paramaters relevant to lensing. Each parameter is given a default value, so no attributes are required at instantiation:
 ```python
-mygalaxy = Galaxy(xc=0,yc=0,ns=0.5,rs=1.0,q=1.0,phi=0.0,galaxyLens=None)
+mygalaxy = Galaxy(xc=0, yc=0, ns=0.5, rs=1.0, q=1.0, phi=0.0, galaxyLens=None)
 ```
 This is the default galaxy object. xc is SOMETHING, yc is SOMETHING, ns is the factor by which the intensity falls of, rs is the **Einstein radius????** or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, phi is the angle of rotation of the galaxy in radians, and galaxyLens is a [Lens object](#Lens) or None.
     
-<a name="setName"></a>
-You can change the name of your galaxy object using the setName method. 
+##### setName
+You can change the name of your galaxy object using the setName method.
 
 ```python
 mygalaxy.setName(newname)
 #your galaxy object will now have the new name of "newname"
 ```
-<a name="setPar"></a>
+##### setPar
 You can change any of the parameters using the setPar function. This function takes two arguments: the new value and the value type.
 
 ```python
@@ -67,7 +68,7 @@ mygalaxy.setPar(val = newvalue, type = valuetype)
 
 The acceptable values for the type argument are the first six attributes of the galaxy class: "xc", "yx", "ns", "rs", "q", "phi". Using one of these as the type argument will change that prospective attribute of your galaxy object to whatever the val argument is.
     
-<a name="setLens"></a>
+##### setLens
 The setLens method can be used to change the Lens attribute of the Galaxyobject. 
 ```python
 mygalaxy.setLens(newlens = myLens)
@@ -75,9 +76,26 @@ mygalaxy.setLens(newlens = myLens)
 ```
 The newlens argument must be a [Lens object](#Lens).
 
+##### generateImage
+The generateImage function is used to create an instance of the [Image class](#Image) based on your galaxy object.
+```python
+mygalaxy.generateImage(nx = value1, ny = value2, lens=False, noise1=0, noise2=0)
+```
+The nx and ny arguments are associated with the dimensions of the maps created by the [Image class](#Image). The lens attribute will apply the [deproject](#deproject) function to the galaxylens attribute of your galaxy object. Noise1 and noise2 will be used to generate the noise map attribute for the [Image class](#Image) object. The lens, noise1, and noise2 attributes are defaulted to False, 0, and 0 respectively. The nx and ny arguments must be inputted in order to use the function. 
+
+##### plot<a name="plotgalaxy"></a>
+This function uses the [generateImage](#generateIamge) function to create an [Image](#Image) object that is then displayed through a matplotlib window.
+```python
+mygalaxy.plot(nx = value1, ny = value2, lens = False)
+```
+The nx, ny, and lens arguments are inputted into the respective arguments for the [generateImage](#generateImage) function. See [generateImage](#generateImage) for a description of those attributes. The lens attribute is defaulted to False, but nx and ny are required.
+
+
 #### Using the Image class<a name="Image"></a>
 
+
 #### Using the Lens class<a name="Lens"></a>
+##### deproject
 ### lenser_aim
 This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. This takes up space. 
 
