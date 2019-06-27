@@ -38,9 +38,11 @@ lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Usin
     - [setPar](#setPar)
     - [setLens](#setLens)
     - [generateImage](#generateImage)
-    - [plot](#plotgalaxy)
+    - [plot](#plotGalaxy)
 2. [Using the Image class](#Image)
-    - [
+    - [plot](#plotImage)
+    - [setMap](#setMap)
+    - [getMap](#getMap)
 3. [Using the Lens class](#Lens)
     - [deproject](#deproject)
 
@@ -83,7 +85,7 @@ mygalaxy.generateImage(nx = value1, ny = value2, lens=False, noise1=0, noise2=0)
 ```
 The nx and ny arguments are associated with the dimensions of the maps created by the [Image class](#Image). The lens attribute will apply the [deproject](#deproject) function to the galaxylens attribute of your galaxy object. Noise1 and noise2 will be used to generate the noise map attribute for the [Image class](#Image) object. The lens, noise1, and noise2 attributes are defaulted to False, 0, and 0 respectively. The nx and ny arguments must be inputted in order to use the function. 
 
-##### plot<a name="plotgalaxy"></a>
+##### plot<a name="plotGalaxy"></a>
 This function uses the [generateImage](#generateIamge) function to create an [Image](#Image) object that is then displayed through a matplotlib window.
 ```python
 mygalaxy.plot(nx = value1, ny = value2, lens = False)
@@ -94,10 +96,28 @@ The nx, ny, and lens arguments are inputted into the respective arguments for th
 #### Using the Image class<a name="Image"></a>
 <a name="InstantiationImage"></a>The image class contains a seriese of maps as its main attributes: a map of the overall data, a map of the noise, and a map of the mask. Each attribute must be given at instantiation. 
 ```python
-myimage = Image(name = "myimagename", datamap = data, noisemap = noisedata, maskmap = maskdata)
+myimage = Image(name = "myimagename", datamap = mydata, noisemap = mynoisedata, maskmap = mymaskdata)
 ```
 For the map attributes to be workable with other functions in Lenser, it is best that they are all 2D lists or numpy arrays of the same size.
 ##### plot<a name="plotImage"></a>
+The plot function will plot information in an [Image object](#Image).
+```python
+myimage.plot(type = mymaptype)
+```
+The accepted values for the type argument are "data", "mask", and "noise". Using one of these arguments will plot the respective map and display it on a matplotlib window. The type argument is defaulted to 'data', so a plot function given without any arguments, `myimage.plot()`, will plot the datamap of the [Image object](#Image).
+##### setMap
+The setMap function can be used to change any of the three maps contained in the [Image object](#Image). 
+```python
+myimage.setMap(newdata = mydata, type = mymaptype)
+```
+The acceptable values for the type argument are "data", "mask", and "noise". Using one of these will change that respective attribute into whatever is given in the newdata argument. 
+##### getMap
+The getMap function can be used to get any of the three maps contained in the [Image object](#Image). 
+```python
+myimage.getMap(type = mymaptype)
+```
+The acceptable values for the type argument are "data", "mask", and "noise". Using one of these will return the respective attribute of your [Image object](#Image).
+#####
 
 #### Using the Lens class<a name="Lens"></a>
 ##### deproject
