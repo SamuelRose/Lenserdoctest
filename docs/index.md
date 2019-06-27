@@ -36,6 +36,7 @@ lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Usin
     - [Instantiation](#Instantiation)
     - [setName](#setName)
     - [setPar](#setPar)
+    - [setLens](#setLens)
     - [Background subtraction]
     - [Noise estimation]
     - [Masking]
@@ -47,7 +48,7 @@ lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Usin
 ```python
 mygalaxy = Galaxy(xc=0,yc=0,ns=0.5,rs=1.0,q=1.0,phi=0.0,galaxyLens=None)
 ```
-This is the default galaxy object. xc is SOMETHING, yc is SOMETHING, ns is the factor by which the intensity falls of, rs is the **Einstein radius????** or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, and phi is the angle of rotation of the galaxy in radians.
+This is the default galaxy object. xc is SOMETHING, yc is SOMETHING, ns is the factor by which the intensity falls of, rs is the **Einstein radius????** or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, phi is the angle of rotation of the galaxy in radians, and galaxyLens is a [Lens object](#Lens) or None.
     
 <a name="setName"></a>
 You can change the name of your galaxy object using the setName method. 
@@ -60,11 +61,19 @@ mygalaxy.setName(newname)
 You can change any of the parameters using the setPar function. This function takes two arguments: the new value and the value type.
 
 ```python
-mygalaxy.setPar(value = newvalue, type = valuetype)
+mygalaxy.setPar(val = newvalue, type = valuetype)
 #mygalaxy will now have its valuetype parameter changed to whatever newvalue is
 ```
 
-The acceptable values for the type argument are the first six attributes of the galaxy class: "xc", "yx", "ns", "rs", "q", "phi". Using one of these as the type argument will change that prospective attribute to whatever the value argument is.
+The acceptable values for the type argument are the first six attributes of the galaxy class: "xc", "yx", "ns", "rs", "q", "phi". Using one of these as the type argument will change that prospective attribute of your galaxy object to whatever the val argument is.
+    
+<a name="setLens"></a>
+The setLens method can be used to change the Lens attribute of the Galaxyobject. 
+```python
+mygalaxy.setLens(newlens = myLens)
+#mygalaxy.Lens is now equal to myLens
+```
+The newlens argument must be a [Lens object](#Lens).
 
 #### Using the Image class<a name="Image"></a>
 
