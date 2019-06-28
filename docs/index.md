@@ -13,14 +13,8 @@ title: Documentation
 
 
 ## Overview
-Lenser is a package of python programs used to analyze FITS files of galaxies. First, the user must input a "postage stamp" containing one galaxy. Next, Lenser will deproject the image to show what the galaxy looked like before the contortion due to gravitanal lensing. Then, Lenser will output the four flexion parameters associated with the inputted galaxy.
 
-Lenser is a powerful tool that will quickly compute lensing data for a given galaxy. It uses a pipeline of programs that refine and improve the prediction and measurment of the deprojection and flexion values. The three programs in the pipeline are [lenser_galaxy](#lenser_galaxy), lenser_aim.
-
-
-The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser_galaxy file can be used to clean an image of a galaxy by getting rid of background radiation, adjusting for noise, and masking out irrelevant data. These images can then be manipulated using the lenser-aim file which will predict how the galaxy looks without the presence of gravitational lensing.
-
-<img src="https://i.imgur.com/uFtAFu0.jpg" width="300">
+Lenser is a powerful tool that finds the lensing parameters of galaxy images. The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser_galaxy file can be used to clean an image of a galaxy by getting rid of background radiation, adjusting for noise, and masking out irrelevant data. These images can then be manipulated using the lenser-aim file which will predict how the galaxy looks without the presence of gravitational lensing and can produce the three shear parameters and four flexion parameters of the galaxy. This tool can be utilized for cosmological probing and dark matter mapping.
 
 
 
