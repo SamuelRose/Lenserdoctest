@@ -28,8 +28,8 @@ The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser
 This package uses python 3, and you will need to have astropy, scipy, numpy, and matplotlib installed. These are standard with most python insallations.
 
 ## Implementation
-[lenser_galaxy](#lenser_galaxy)
-[lenser_aim](#lenser_aim)
+1. [lenser_galaxy](#lenser_galaxy)
+2. [lenser_aim](#lenser_aim)
 
 ### lenser_galaxy
 lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using these classes you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
