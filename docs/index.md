@@ -3,9 +3,9 @@ layout: default
 title: Documentation
 ---
 
-# Table of Contents
-## 1. [Overview](#overview)
-## 2. [Installation](#installation)
+## Table of Contents
+**1. [Overview](#overview)**
+**2. [Installation](#installation)**
 ## 3. [Implementation](#implementation)
 ##     - [lenser_galaxy](#lenser_galaxy)
 ##     - [lenser_aim](#lenser_galaxy)
