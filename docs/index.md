@@ -3,12 +3,12 @@ layout: default
 title: Documentation
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Installation](#installation)
-3. [Implementation](#implementation)
-    - [lenser_galaxy](#lenser_galaxy)
-    - [lenser_aim](#lenser_galaxy)
+# Table of Contents
+## 1. [Overview](#overview)
+## 2. [Installation](#installation)
+## 3. [Implementation](#implementation)
+##     - [lenser_galaxy](#lenser_galaxy)
+##     - [lenser_aim](#lenser_galaxy)
     
 
 
@@ -32,20 +32,20 @@ This package uses python 3, and you will need to have astropy, scipy, numpy, and
 
 ### lenser_galaxy
 lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using these classes you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
-1. [Using the Galaxy class](#Galaxy)
-    - [setName()](#setName())
-    - [setPar()](#setPar())
-    - [setLens()](#setLens())
-    - [generateImage()](#generateImage())
-    - [plot()](#plotGalaxy)
-2. [Using the Image class](#Image)
-    - [plot()](#plotImage)
-    - [setMap()](#setMap())
-    - [getMap()](#getMap())
-3. [Using the Lens class](#Lens)
-    - [deproject()](#deproject())
-    - [setPsi2()](#setPsi2())
-    - [setPsi3()](#setPsi3())
+## 1. [Using the Galaxy class](#Galaxy)
+##     - [setName()](#setName())
+##     - [setPar()](#setPar())
+##     - [setLens()](#setLens())
+##     - [generateImage()](#generateImage())
+##     - [plot()](#plotGalaxy)
+## 2. [Using the Image class](#Image)
+##     - [plot()](#plotImage)
+##     - [setMap()](#setMap())
+##     - [getMap()](#getMap())
+## 3. [Using the Lens class](#Lens)
+##     - [deproject()](#deproject())
+##     - [setPsi2()](#setPsi2())
+##     - [setPsi3()](#setPsi3())
 
 <a name="Galaxy"></a>
 #### Using the Galaxy class
