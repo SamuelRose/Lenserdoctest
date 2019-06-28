@@ -14,10 +14,10 @@ title: Documentation
 
 ## Overview
 
-Lenser is a powerful tool that finds the lensing parameters of galaxy images. The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser_galaxy file can be used to clean an image of a galaxy by getting rid of background radiation, adjusting for noise, and masking out irrelevant data. These images can then be manipulated using the lenser-aim file which will predict how the galaxy looks without the presence of gravitational lensing and can produce the three shear parameters and four flexion parameters of the galaxy. This tool can be utilized for cosmological probing and dark matter mapping.**Test test**
+Lenser is a powerful tool that finds the lensing parameters of galaxy images. The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser_galaxy file can be used to clean an image of a galaxy by getting rid of background radiation, adjusting for noise, and masking out irrelevant data. These images can then be manipulated using the lenser-aim file which will predict how the galaxy looks without the presence of gravitational lensing and can produce the three shear parameters and four flexion parameters of the galaxy. This tool can be utilized for cosmological probing and dark matter mapping.
 
-![Plot of galaxy FITS file using Lenser](images/galaxyfigure.png)
-<img src="images/galaxyfigure.png" width="100" height="100">
+
+<img src="images/galaxyfigure.png" width="350" height="300">
 ## Installation
 This package uses python 3, and you will need to have astropy, scipy, numpy, and matplotlib installed. These are standard with most python insallations.
 
