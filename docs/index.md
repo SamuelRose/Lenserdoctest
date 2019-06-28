@@ -56,7 +56,7 @@ The galaxy object contains the set of paramaters relevant to lensing. Each param
 mygalaxy = Galaxy(xc=0, yc=0, ns=0.5, rs=1.0, q=1.0, phi=0.0, galaxyLens=None)
 ```
 
-This is the default galaxy object. xc is SOMETHING, yc is SOMETHING, ns is the factor by which the intensity falls of, rs is the **Einstein radius????** or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, phi is the angle of rotation of the galaxy in radians, and galaxyLens is a [Lens object](#Lens) or None.
+This is the default galaxy object. xc and yc which are the dimensions of the "postage stamp," ns is the factor by which the intensity falls of, rs is the reduced Einstein radius or the radius at which the intensity has fallen off by one half, q is the ratio of the semimajor and semiminor axes of the galaxy, phi is the angle of rotation of the galaxy in radians, and galaxyLens is a [Lens object](#Lens) or None.
     
 ##### setName()
 You can change the name of your galaxy object using the setName method.
