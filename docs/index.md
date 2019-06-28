@@ -18,7 +18,7 @@ Lenser is a powerful tool that finds the lensing parameters of galaxy images. Th
 
 <figure>
     <img src="images/galaxyfigure.png" width="350" height="300" >
-    <figcaption>Galaxy FITS file plotted using Lenser</figcaption>
+    <figcaption><i>Galaxy FITS file plotted using Lenser</b></figcaption>
 </figure>
 ## Installation
 This package uses python 3, and you will need to have astropy, scipy, numpy, and matplotlib installed. These are standard with most python insallations.
