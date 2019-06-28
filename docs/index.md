@@ -4,11 +4,11 @@ title: Documentation
 ---
 
 ## Table of Contents
-**1. [Overview](#overview)**
-**2. [Installation](#installation)**
-## 3. [Implementation](#implementation)
-##     - [lenser_galaxy](#lenser_galaxy)
-##     - [lenser_aim](#lenser_galaxy)
+1. [Overview](#overview)
+2. [Installation](#installation)
+3. [Implementation](#implementation)
+    - [lenser_galaxy](#lenser_galaxy)
+    - [lenser_aim](#lenser_galaxy)
     
 
 
@@ -32,20 +32,20 @@ This package uses python 3, and you will need to have astropy, scipy, numpy, and
 
 ### lenser_galaxy
 lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using these classes you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
-## 1. [Using the Galaxy class](#Galaxy)
-##     - [setName()](#setName())
-##     - [setPar()](#setPar())
-##     - [setLens()](#setLens())
-##     - [generateImage()](#generateImage())
-##     - [plot()](#plotGalaxy)
-## 2. [Using the Image class](#Image)
-##     - [plot()](#plotImage)
-##     - [setMap()](#setMap())
-##     - [getMap()](#getMap())
-## 3. [Using the Lens class](#Lens)
-##     - [deproject()](#deproject())
-##     - [setPsi2()](#setPsi2())
-##     - [setPsi3()](#setPsi3())
+1. [Using the Galaxy class](#Galaxy)
+    - [setName()](#setName())
+    - [setPar()](#setPar())
+    - [setLens()](#setLens())
+    - [generateImage()](#generateImage())
+    - [plot()](#plotGalaxy)
+2. [Using the Image class](#Image)
+    - [plot()](#plotImage)
+    - [setMap()](#setMap())
+    - [getMap()](#getMap())
+3. [Using the Lens class](#Lens)
+    - [deproject()](#deproject())
+    - [setPsi2()](#setPsi2())
+    - [setPsi3()](#setPsi3())
 
 <a name="Galaxy"></a>
 #### Using the Galaxy class
@@ -178,7 +178,9 @@ mylens.setPsi2(psi2new = mynewvalue)
 mylens.setPsi2(mynewvalue)
 ```
 
-The psi2 attribute of mylens is now set to mynewvalue. This attribute should be a list or array of length 3.
+The psi2 attribute of mylens is now set to mynewvalue. This attribute should be a list or array of length three.
+
+<a name="setPsi3Lens"></a>
 ##### setPsi3()
 The values for psi3 can be changed using the setPsi3 function.
 
@@ -188,14 +190,75 @@ mylens.setPsi3(psi3new = mynewvalue)
 mylens.setPsi3(mynewvalue)
 ```
 
-The psi3 attribute of mylens is now set to mynewvalue. This attribute should be a list or array of length 4.
+The psi3 attribute of mylens is now set to mynewvalue. This attribute should be a list or array of length four.
 
 ### lenser_aim
 The file lenser_aim contains the aimModel class. This will allow you to take your cleaned up image of a galaxy, produced through the methods in [lenser_galaxy](#lenser_galaxy), and produce accurate lensing parameters through a multi-step minimization process to find the best predicted values.
 
 1. [Using the aimModel class](#Aim)
    - [simpleStart()](#simpleStart)
-   - [setPsi2()](#
+   - [setPsi2()](#setPsi2Aim)
+   - [setPsi3()](#setPsi3Aim)
+   - [setGalaxyPar()](#setGalaxyPar)
+   - [generateImage()](#generateImage)
+   - [chisq()](#chisq)
 
 <a name="Aim"></a>
 #### Using the aimModel class
+The aimModel class has three attributes that can be set at instantiation.
+
+```python
+myAimObject = aimModel(myImage = ImageObject, myGalaxy = Galaxy(), myLens = Lens())
+```
+The myImage attribute must be given at instantiation, but the myGalaxy and myLens attributes are defaulted to the default [Galaxy](#Galaxy) and [Lens](#Lens) objects. The myImage attribute must be an instance of the [Image class](#Image).
+
+##### simpleStart()
+The simpleStart() function uses the moments of the galaxy contained in the datamap of the Image object that is the myImage attribute of the aimModel object in order to find the q, phi, xc, yc, and rs parameters of the galaxy. These parameters are appended to the default Galaxy object that is the myGalaxy attribute. The q, phi, xc, and yc parameters are then printed.
+```python
+myAimObject.simpleStart()
+```
+The function takes no parameters. 
+
+<a name="setPsi2Aim"></a>
+##### setPsi2()
+The setPsi2() function can change the psi2 values of the [Galaxy object](#Galaxy) that is the myGalaxy attribute of your aimModel object.
+
+```python
+myAimObject.setPsi2(psi2new = mynewvalue)
+#or
+myAimObject.setPsi2(mynewvalue)
+```
+The psi2 attribute of the myGalaxy attribute of myAimObject is now changed to mynewvalue. The argument should be a list or array of length three.
+
+<a name="setPsi3Aim"></a>
+##### setPsi3()
+The setPsi3() function can change the psi3 values of the [Galaxy object](#Galaxy) that is the myGalaxy attribute of your aimModel object.
+
+```python
+myAimObject.setPsi3(psi3new = mynewvalue)
+#or
+myAimObject.setPsi3(mynewvalue)
+```
+The psi3 attribute of the myGalaxy attribute of myAimObject is now changed to mynewvalue. The argument should be a list or array of length four.
+
+##### setGalaxyPar()
+The setGalaxyPar() function can be used to change any of the parameter attributes of the Galaxy object that is the myGalaxy attribute of your aimModel object.
+```python
+myAimObject.setGalaxyPar(val = mynewvalue, type = myvaluetype)
+```
+The only appropriate values for the type argument are the galaxy parameters "xc", "yc", "ns", "rs", "q", and "phi". Using one of these type values will change that respective attribute of the Galaxy object to whatever is inputted into the val argument.
+
+##### generateImage()
+The generateImage() function in the aimModel class returns a new Image object that is the deprojection of the datamap of the myImage attribute of your aimModel object.
+```python
+myunlensedimage = myAimObject.generateimage()
+```
+myunlensedimage is now an instance of the Image class containing a datamap of the deprojection of the myImage attribute of the myAimObject.
+
+##### chisq()
+The chisq() function will return a float value that is the chi squared value corresponding to the deprojected image of your galaxy.
+```python
+myChiSquaredvalue = myAimObject.chisq()
+```
+This function does not take any arguments.
+
