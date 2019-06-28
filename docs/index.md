@@ -25,7 +25,8 @@ The Lenser package uses two main files: lenser_galaxy and lenser_aim. The lenser
 
 
 ## Installation
-This package uses python 3, and you will need to have astropy, scipy, numpy, and matplotlib installed. These are standard with most python insallations. Depending on the environment you run the code from, you may also need to install a LaTex compiler (MikTex should work).
+This package uses python 3, and you will need to have astropy, scipy, numpy, and matplotlib installed. These are standard with most python insallations.
+
 ## Implementation
 [lenser_galaxy](#lenser_galaxy)
 [lenser_aim](#lenser_aim)
