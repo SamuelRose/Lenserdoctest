@@ -31,7 +31,7 @@ This package uses python 3, and you will need to have astropy, scipy, numpy, and
 [lenser_aim](#lenser_aim)
 
 ### lenser_galaxy
-lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using this class you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
+lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Using these classes you can preform many manipulations on a "postage stamp" of a galaxy including subtracting background radiation, estimating noise, and masking tangential radiation to only show relevant data. These three functions prepare the data to be inputted into [lenser_aim](#lenser_aim)
 1. [Using the Galaxy class](#Galaxy)
     - [setName()](#setName())
     - [setPar()](#setPar())
@@ -44,8 +44,8 @@ lenser_galaxy consists of a Galaxy class, an Image class, and a Lens class. Usin
     - [getMap()](#getMap())
 3. [Using the Lens class](#Lens)
     - [deproject()](#deproject())
-    - [setpsi2()](#setpsi2())
-    - [setpsi3()](#setpsi3())
+    - [setPsi2()](#setPsi2())
+    - [setPsi3()](#setPsi3())
 
 <a name="Galaxy"></a>
 #### Using the Galaxy class
@@ -161,17 +161,41 @@ The attributes, psi2 and psi3, represent the three parameters of shear and the f
 
 ##### deproject()
 The deprojeciton function applies a transform to a set of data that "deprojects" the data to before it was lensed.
+
 ```python
 mylens.deproject(thetax = value1, thetay = value2)
 ```
+
 The values for thetax and thetay can either be numbers or numpy arrays. The new values found after the transformation corresponding to thetax and thetay are then returned to the user.
 
-##### setpsi2()
-The values for psi2 can be changed using the setpsi2 function.
-```python
-mylens.setpsi2(psi2new = mynewvalue)
-```
-The psi2 attribute is now set to mynewvalue. This attribute should be a list of length 3.
-##### setpsi3()
-### lenser_aim
+<a name="setPsi2Lens"></a>
+##### setPsi2()
+The values for psi2 can be changed using the setPsi2 function.
 
+```python
+mylens.setPsi2(psi2new = mynewvalue)
+#or
+mylens.setPsi2(mynewvalue)
+```
+
+The psi2 attribute of mylens is now set to mynewvalue. This attribute should be a list or array of length 3.
+##### setPsi3()
+The values for psi3 can be changed using the setPsi3 function.
+
+```python
+mylens.setPsi3(psi3new = mynewvalue)
+#or
+mylens.setPsi3(mynewvalue)
+```
+
+The psi3 attribute of mylens is now set to mynewvalue. This attribute should be a list or array of length 4.
+
+### lenser_aim
+The file lenser_aim contains the aimModel class. This will allow you to take your cleaned up image of a galaxy, produced through the methods in [lenser_galaxy](#lenser_galaxy), and produce accurate lensing parameters through a multi-step minimization process to find the best predicted values.
+
+1. [Using the aimModel class](#Aim)
+   - [simpleStart()](#simpleStart)
+   - [setPsi2()](#
+
+<a name="Aim"></a>
+#### Using the aimModel class
