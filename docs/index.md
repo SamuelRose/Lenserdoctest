@@ -8,7 +8,7 @@ title: Documentation
 2. [Installation](#installation)
 3. [Implementation](#implementation)
     - [lenser_galaxy](#lenser_galaxy)
-    - [lenser_aim](#lenser_galaxy)
+    - [lenser_aim](#lenser_aim)
     
 
 
